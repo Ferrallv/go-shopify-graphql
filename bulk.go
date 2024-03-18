@@ -84,6 +84,7 @@ func (s *BulkOperationServiceOp) GetCurrentBulkQuery(ctx context.Context) (*mode
 	}
 	err := s.client.gql.Query(ctx, &q, nil)
 	if err != nil {
+		fmt.Printf("Query that caused error %v\n", q)
 		return nil, fmt.Errorf("query: %w", err)
 	}
 	return &q.CurrentBulkOperation.BulkOperation, nil
